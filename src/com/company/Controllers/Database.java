@@ -5,7 +5,7 @@ import com.company.Models.Recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Recipes {
+public class Database {
 
     public static List<Recipe> allCurrentRecipes(){
 
