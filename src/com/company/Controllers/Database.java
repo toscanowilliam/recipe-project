@@ -1,5 +1,6 @@
 package com.company.Controllers;
 
+import com.company.Main;
 import com.company.Models.Recipe;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Database {
         cerealIngredients.add("cereal");
         cerealIngredients.add("milk");
         cereal.setIngredients(cerealIngredients);
+        cereal.setLetterCountsOfNameOfReipe(Main.letterCountsOfWord(cereal.getNameOfRecipe()));
 
         Recipe sandwich = new Recipe();
         sandwich.setNameOfRecipe("sandwich");
@@ -26,6 +28,8 @@ public class Database {
         sandwichIngredients.add("mayonnaise");
         sandwichIngredients.add("mustard");
         sandwich.setIngredients(sandwichIngredients);
+        sandwich.setLetterCountsOfNameOfReipe(Main.letterCountsOfWord(sandwich.getNameOfRecipe()));
+
 
         List<Recipe> listOfRecipes = new ArrayList<>();
         listOfRecipes.add(cereal);

@@ -2,9 +2,7 @@ package com.company;
 import com.company.Controllers.Database;
 import com.company.Models.Recipe;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Main {
@@ -13,7 +11,9 @@ public class Main {
     {
 	    // write your code here
 
-        promptUser();
+        spellCheck("sandwich");
+
+        //promptUser();
 
 
     }
@@ -95,6 +95,10 @@ public class Main {
                 {
                     break whileLoop;
                 }
+                else
+                {
+
+                }
             }
             if (!foundRecipe)
             {
@@ -104,5 +108,68 @@ public class Main {
 
 
     }
+
+
+    public static void spellCheck(String inputedWord)
+    {
+
+        Map<String, Integer> letterCountsOfInputedWord = letterCountsOfWord(inputedWord);
+
+
+        OuterLoop:
+        for (Recipe recipe : Database.allCurrentRecipes())
+        {
+            String currentNameOfRecipe = recipe.getNameOfRecipe();
+            Map<String, Integer> letterCountsOfNameOfRecipe = letterCountsOfWord(currentNameOfRecipe);
+
+            //I'm trying to find out how to check if there's 1 matching key (letter) in both maps.
+            //Then, I'm trying to see if there is a value (letter count) greater than 1 in at least one of the maps.
+
+            System.out.print("\n1");
+
+            InnerLoop:
+            for (Map.Entry<String, Integer> entry : letterCountsOfNameOfRecipe.entrySet())
+            {
+                System.out.print("\n2");
+
+                String currentLetterOfRecipe = entry.getKey();
+                int currentLetterCountOfRecipe = entry.getValue();
+
+                if (letterCountsOfInputedWord.containsKey(currentLetterOfRecipe)) //If there is a matching letter in both words
+                {
+                    System.out.print("\n3");
+
+                    if (currentLetterCountOfRecipe == 2 && letterCountsOfInputedWord.get(currentLetterOfRecipe) == 2)
+                    {
+                        System.out.print("\nDid you mean " + currentNameOfRecipe + "?\n");
+                        break OuterLoop;
+                    }
+                }
+            }
+            System.out.print("\nRecipe not found. Please check your spelling and try again");
+        }
+    }
+
+    public static Map<String, Integer> letterCountsOfWord(String inputedWord)
+    {
+
+        String word = inputedWord;
+
+        Map<String, Integer> numberOfCharactersInWord = new HashMap<>();
+//        Map<Character, Integer> numberOfCharactersInWord = new HashMap<>();
+
+
+        for (int i = 0; i < word.length(); i++) //loops through word
+        {
+
+            String characterInWord = String.valueOf(word.charAt(i)); // converts char to string
+            int letterCount = word.length() - word.replaceAll(characterInWord,"").length();
+
+            numberOfCharactersInWord.put(characterInWord, letterCount);
+        }
+
+        return numberOfCharactersInWord;
+    }
+
 
 }
