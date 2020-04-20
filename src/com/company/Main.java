@@ -24,7 +24,24 @@ public class Main
 
         String str = "ABIGWORD";
 
-        breakWordIntoPieces(str);
+      //  breakWordIntoPiecesRefactored(str);
+
+        List<String> listOfFragments = new ArrayList<>();
+
+        for(List<String> sub : substrings(str)){
+            for(String sub2 : sub){
+                if (sub2.length() > 1 && !listOfFragments.contains(sub2))
+                listOfFragments.add(sub2);
+
+            }
+        }
+
+        for (String fragment : listOfFragments){
+            System.out.print("\n" + fragment);
+        }
+
+
+       // breakWordIntoPiecesRefactored(str);
 
        // promptUser();
     }

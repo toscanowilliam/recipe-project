@@ -4,10 +4,7 @@ import com.company.Controllers.Database.getAllObjects;
 import com.company.Controllers.Database.organizeData;
 import com.company.Models.Recipe;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -255,17 +252,40 @@ public class SpellCheck {
         }
     }
 
+    public static void breakWordIntoPiecesRefactored(String str)
+    {
+        int subtractCharactersBy = 0;
+        int lengthOfWord = str.length();
+        while (lengthOfWord > 1) //this if can be checked as the method is called
+        {
+
+            str = removeFirstChar(str, subtractCharactersBy); // this is choking on "i = 2"
+            lengthOfWord -= 1;
+            subtractCharactersBy +=1;
+            List<String> fragments = breakWordIntoPiecesFromRightToLeft(str);
+
+            for (String fragment : fragments)
+            {
+                System.out.print("\n" + fragment);
+            }
+        }
+    }
+
     public static void breakWordIntoPieces(String str)
     {
 
-        List<String> fragments = breakWordIntoPiecesFromRightToLeft(str);
 
 
-        for (String fragment : fragments)
+        if (str.length() > 1)
         {
-            System.out.print("\n" + fragment);
-        }
 
+            List<String> fragments = breakWordIntoPiecesFromRightToLeft(str);
+
+            for (String fragment : fragments)
+            {
+                System.out.print("\n" + fragment);
+            }
+        }
         System.out.print("\n");
 
         str = removeFirstChar(str, 1);
@@ -276,55 +296,109 @@ public class SpellCheck {
             System.out.print("\n" + fragment);
         }
 
-        str = removeFirstChar(str, 1);
-        List<String> fragments3 = breakWordIntoPiecesFromRightToLeft(str);
-
-        System.out.print("\n");
-
-        for (String fragment : fragments3)
+        if (str.length() > 1)
         {
-            System.out.print("\n" + fragment);
+            str = removeFirstChar(str, 1);
+            List<String> fragments3 = breakWordIntoPiecesFromRightToLeft(str);
+
+            System.out.print("\n");
+
+            for (String fragment : fragments3)
+            {
+                System.out.print("\n" + fragment);
+            }
         }
 
-        str = removeFirstChar(str, 1);
-        List<String> fragments4 = breakWordIntoPiecesFromRightToLeft(str);
-
-        System.out.print("\n");
-
-        for (String fragment : fragments4)
+        if (str.length() > 1)
         {
-            System.out.print("\n" + fragment);
+            str = removeFirstChar(str, 1);
+            List<String> fragments4 = breakWordIntoPiecesFromRightToLeft(str);
+
+            System.out.print("\n");
+
+            for (String fragment : fragments4)
+            {
+                System.out.print("\n" + fragment);
+            }
         }
 
-        str = removeFirstChar(str, 1);
-        List<String> fragments5 = breakWordIntoPiecesFromRightToLeft(str);
+        if (str.length() > 1) {
 
-        System.out.print("\n");
+            str = removeFirstChar(str, 1);
+            List<String> fragments5 = breakWordIntoPiecesFromRightToLeft(str);
 
-        for (String fragment : fragments5)
-        {
-            System.out.print("\n" + fragment);
+            System.out.print("\n");
+
+            for (String fragment : fragments5)
+            {
+                System.out.print("\n" + fragment);
+            }
         }
 
-        str = removeFirstChar(str, 1);
-        List<String> fragments6 = breakWordIntoPiecesFromRightToLeft(str);
 
-        System.out.print("\n");
-
-        for (String fragment : fragments6)
+        if (str.length() > 1)
         {
-            System.out.print("\n" + fragment);
+            str = removeFirstChar(str, 1);
+            List<String> fragments6 = breakWordIntoPiecesFromRightToLeft(str);
+
+            System.out.print("\n");
+
+            for (String fragment : fragments6)
+            {
+                System.out.print("\n" + fragment);
+            }
         }
 
-        str = removeFirstChar(str, 1);
-        List<String> fragments7 = breakWordIntoPiecesFromRightToLeft(str);
-
-        System.out.print("\n");
-
-        for (String fragment : fragments7)
+        if (str.length() > 1)
         {
-            System.out.print("\n" + fragment);
+            str = removeFirstChar(str, 1);
+            List<String> fragments7 = breakWordIntoPiecesFromRightToLeft(str);
+            System.out.print("\n");
+            for (String fragment : fragments7)
+            {
+                System.out.print("\n" + fragment);
+            }
         }
 
+        if (str.length() > 1)
+        {
+            str = removeFirstChar(str, 1);
+            List<String> fragments8 = breakWordIntoPiecesFromRightToLeft(str);
+
+            System.out.print("\n");
+
+            for (String fragment : fragments8)
+            {
+                System.out.print("\n" + fragment);
+            }
+        }
     }
+
+    public static List<List<String>> substrings(String input) {
+
+        // Base case: There's only one way to split up a single character
+        // string, and that is ["x"] where x is the character.
+        if (input.length() == 1){
+            return Collections.singletonList(Collections.singletonList(input));
+        }
+        // To hold the result
+        List<List<String>> result = new ArrayList<>();
+
+        // Recurse (since you tagged the question with recursion ;)
+        for (List<String> subresult : substrings(input.substring(1))) {
+
+            // Case: Don't split
+            List<String> l2 = new ArrayList<>(subresult);
+            l2.set(0, input.charAt(0) + l2.get(0));
+            result.add(l2);
+
+            // Case: Split
+            List<String> l = new ArrayList<>(subresult);
+            l.add(0, input.substring(0, 1));
+            result.add(l);
+        }
+
+        return result;
+    }
+
 }
