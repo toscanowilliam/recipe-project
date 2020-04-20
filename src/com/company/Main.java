@@ -5,9 +5,10 @@ import com.company.Controllers.Database.organizeData;
 import com.company.Models.Recipe;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-import static com.company.Controllers.SpellCheck.breakThreeLetterWordIntoPieces;
-import static com.company.Controllers.SpellCheck.spellCheck3LetterWord;
+import static com.company.Controllers.SpellCheck.*;
 
 
 public class Main
@@ -19,8 +20,11 @@ public class Main
 
         // compareTheNumberOfLettersOfWord("sandwich");
 
-        spellCheck3LetterWord("jea");
+     //   spellCheck3LetterWord("kea");
 
+        String str = "ABIGWORD";
+
+        breakWordIntoPieces(str);
 
        // promptUser();
     }
