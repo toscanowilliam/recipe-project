@@ -7,10 +7,8 @@ import java.util.List;
 
 public class organizeData
 {
-
     public static List<String> listOfNamesOfAllRecipes (List<Recipe> listOfExistingRecipes)
     {
-
         List<String> listOfNamesOfExistingRecipes = new ArrayList<>();
 
         for (Recipe recipe: listOfExistingRecipes)

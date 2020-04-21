@@ -15,9 +15,7 @@ public class Recipe {
 
     private Map<String, Integer> letterCountsOfNameOfRecipe;
 
-  //  private Map<String, List<String>> fragmenstsOfName = new HashMap<>();
-
-    private List<String> listOfWordFragments = new ArrayList<>();
+    private List<String> listOfSubstrings = new ArrayList<>();
 
 
     public List<String> getIngredients() { return ingredients; }
@@ -35,14 +33,8 @@ public class Recipe {
     public Map<String, Integer> getLetterCountsOfNameOfRecipe() { return letterCountsOfNameOfRecipe; }
 
     public void setLetterCountsOfNameOfRecipe(Map<String, Integer> letterCountsOfNameOfRecipe) { this.letterCountsOfNameOfRecipe = letterCountsOfNameOfRecipe; }
-//
-//    public Map<String, List<String>> getFragmenstsOfName() { return fragmenstsOfName; }
-//
-//    public void setFragmenstsOfName(Map<String, List<String>> fragmenstsOfName) { this.fragmenstsOfName = fragmenstsOfName; }
 
+    public List<String> getListOfSubstrings() { return listOfSubstrings; }
 
-    public List<String> getListOfWordFragments() { return listOfWordFragments; }
-
-    public void setListOfWordFragments(List<String> listOfWordFragments) { this.listOfWordFragments = listOfWordFragments; }
-
+    public void setListOfSubstrings(List<String> listOfSubstrings) { this.listOfSubstrings = listOfSubstrings; }
 }

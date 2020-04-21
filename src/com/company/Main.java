@@ -13,37 +13,14 @@ import static com.company.Controllers.SpellCheck.*;
 
 public class Main
 {
-
     public static void main(String[] args)
     {
-        // write your code here
-
-        // compareTheNumberOfLettersOfWord("sandwich");
-
-     //   spellCheck3LetterWord("kea");
-
-        String str = "ABIGWORD";
-
-      //  breakWordIntoPiecesRefactored(str);
-
-        List<String> listOfFragments = new ArrayList<>();
-
-        for(List<String> sub : substrings(str)){
-            for(String sub2 : sub){
-                if (sub2.length() > 1 && !listOfFragments.contains(sub2))
-                listOfFragments.add(sub2);
-
-            }
+        for(String substring : breakStringIntoAllPossibleSubstrings("ABIGWORD", 2))
+        {
+            System.out.print(substring);
+            System.out.print("\n");
         }
-
-        for (String fragment : listOfFragments){
-            System.out.print("\n" + fragment);
-        }
-
-
-       // breakWordIntoPiecesRefactored(str);
-
-       // promptUser();
+        //promptUser();
     }
 
     public static void promptUser()
@@ -84,7 +61,6 @@ public class Main
 
     public static void findByRecipe()
     {
-
         Boolean userChoseReturnToMainMenu = false;
 
         whileLoop:
@@ -93,6 +69,7 @@ public class Main
             Boolean foundRecipe = false;
 
             //TODO: Use numbers instead of letters in a toString fashion
+            //TODO: Refactor into userPrompt Method or a separate Method
             System.out.print("\nPlease enter a Recipe\n");
             System.out.print("Press r/R to return to Main Menu\n");
             System.out.print("Press q/Q to Quit\n");
