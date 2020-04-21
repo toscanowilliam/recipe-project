@@ -99,16 +99,17 @@ public class SpellCheck {
 //        }
 //    }
 
-    //From: https://stackoverflow.com/questions/61332162/print-all-the-combination-of-substrings-from-a-given-string-in-order-by-letter
-    public static List<String> breakStringIntoAllPossibleSubstrings(String str, int min)
+//    From: https://stackoverflow.com/questions/61332162/print-all-the-combination-of-substrings-from-a-given-string-in-order-by-letter
+    public static List<String> breakStringIntoAllPossibleSubstrings(String str, int num)
     {
         List<String> listOfSubstrings = new ArrayList<>();
 
         Boolean insideLoop = false;
 
-        for(int i=0; i<=str.length()-min; i++)
+
+        for(int i=0; i<=str.length()-num; i++)
         {
-            for(int j=str.length(); j>=i+min; j--)
+            for(int j=str.length(); j>=i+num; j--)
             {
                 //System.out.println(str.substring(i, j));
                 if (insideLoop) //This is simply to not add the complete string to the list. Only substrings

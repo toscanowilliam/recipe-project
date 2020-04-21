@@ -15,11 +15,15 @@ public class Main
 {
     public static void main(String[] args)
     {
-        for(String substring : breakStringIntoAllPossibleSubstrings("ABIGWORD", 2))
+        String word = "ABIGWORD";
+        int min = 2;
+
+        for(String substring : breakStringIntoAllPossibleSubstrings(word, min))
         {
-            System.out.print(substring);
-            System.out.print("\n");
+                System.out.print(substring);
+                System.out.print("\n");
         }
+
         //promptUser();
     }
 
