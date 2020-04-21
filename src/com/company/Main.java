@@ -11,11 +11,7 @@ public class Main {
 
     public static void main(String[] args)
     {
-	    // write your code here
-
         promptUser();
-
-
     }
 
     public static void promptUser()
@@ -56,13 +52,11 @@ public class Main {
 
     public static void findByRecipe()
     {
-
         Boolean userChoseReturnToMainMenu = false;
 
         whileLoop:
         while(!userChoseReturnToMainMenu)
         {
-
             Boolean foundRecipe = false;
 
             //TODO: Use numbers instead of letters in a toString fashion
@@ -71,7 +65,7 @@ public class Main {
             System.out.print("Press q/Q to Quit\n");
 
             Scanner input = new Scanner(System.in);
-            String selectionOrRecipe = input.next();
+            String selectionOrRecipe = input.next().toLowerCase();
 
             for (Recipe recipe : Database.allCurrentRecipes())
             {
@@ -101,8 +95,5 @@ public class Main {
                 System.out.print("\nRecipe not found. Please check your spelling and try again");
             }
         }
-
-
     }
-
 }
