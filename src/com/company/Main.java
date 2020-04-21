@@ -15,12 +15,13 @@ public class Main
 {
     public static void main(String[] args)
     {
-
         //promptUser();
-
         String inputedWord = "andwich";
 
-        spellCheck(inputedWord);
+        for (String wordUserMightHaveMeant : spellCheck(inputedWord))
+        {
+            System.out.print("\nDid you mean: " + wordUserMightHaveMeant + "?");
+        }
     }
 
     public static void promptUser()

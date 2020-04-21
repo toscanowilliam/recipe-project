@@ -123,9 +123,8 @@ public class SpellCheck {
         return listOfSubstrings;
     }
 
-    public static void spellCheck(String inputedWord)
+    public static List<String> spellCheck(String inputedWord)
     {
-
         List<String> listOfSubstringsForInputedWord = breakStringIntoAllPossibleSubstrings(inputedWord, 2);
         List<String> listOfWordsUserMightHaveMeant = new ArrayList<>();
 
@@ -141,13 +140,6 @@ public class SpellCheck {
                 }
             }
         }
-
-        for (String word : listOfWordsUserMightHaveMeant)
-        {
-            System.out.print("\nDid you mean: " + word + "?");
-
-        }
-
-
+        return listOfWordsUserMightHaveMeant;
     }
 }
