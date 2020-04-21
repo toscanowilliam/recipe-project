@@ -15,16 +15,12 @@ public class Main
 {
     public static void main(String[] args)
     {
-        String word = "ABIGWORD";
-        int min = 2;
-
-        for(String substring : breakStringIntoAllPossibleSubstrings(word, min))
-        {
-                System.out.print(substring);
-                System.out.print("\n");
-        }
 
         //promptUser();
+
+        String inputedWord = "andwich";
+
+        spellCheck(inputedWord);
     }
 
     public static void promptUser()

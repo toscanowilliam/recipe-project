@@ -8,6 +8,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static com.company.Controllers.Database.getAllObjects.allCurrentRecipes;
+import static com.company.Controllers.Database.organizeData.listOfNamesOfAllRecipes;
+
 public class SpellCheck {
 
     //This function will most likely not be needed any more. It maps each character with a word count. Could be useful but I don;t know
@@ -16,7 +19,7 @@ public class SpellCheck {
         Map<String, Integer> letterCountsOfInputedWord = getLetterCountsOfWord(inputedWord);
 
         OuterLoop:
-        for (Recipe recipe : getAllObjects.allCurrentRecipes()) {
+        for (Recipe recipe : allCurrentRecipes()) {
             String currentNameOfRecipe = recipe.getNameOfRecipe();
             Map<String, Integer> letterCountsOfNameOfRecipe = getLetterCountsOfWord(currentNameOfRecipe);
 
@@ -53,7 +56,7 @@ public class SpellCheck {
 
         Map<String, Integer> numberOfCharactersInWord = new HashMap<>();
 
-        for (int i = 0; i <= word.length(); i++) //loops through word
+        for (int i = 0; i < word.length(); i++) //loops through word
         {
             String characterInWord = String.valueOf(word.charAt(i)); // converts char to string
             int letterCount = word.length() - word.replaceAll(characterInWord, "").length();
@@ -103,9 +106,7 @@ public class SpellCheck {
     public static List<String> breakStringIntoAllPossibleSubstrings(String str, int num)
     {
         List<String> listOfSubstrings = new ArrayList<>();
-
         Boolean insideLoop = false;
-
 
         for(int i=0; i<=str.length()-num; i++)
         {
@@ -120,5 +121,33 @@ public class SpellCheck {
             }
         }
         return listOfSubstrings;
+    }
+
+    public static void spellCheck(String inputedWord)
+    {
+
+        List<String> listOfSubstringsForInputedWord = breakStringIntoAllPossibleSubstrings(inputedWord, 2);
+        List<String> listOfWordsUserMightHaveMeant = new ArrayList<>();
+
+        for (Recipe recipe : allCurrentRecipes())
+        {
+            List<String> listOfSubstringsForCurrentRecipe = recipe.getListOfSubstrings();
+
+            for (String substring : listOfSubstringsForCurrentRecipe)
+            {
+                if (listOfSubstringsForInputedWord.contains(substring) && !listOfWordsUserMightHaveMeant.contains(recipe.getNameOfRecipe()))
+                {
+                    listOfWordsUserMightHaveMeant.add(recipe.getNameOfRecipe());
+                }
+            }
+        }
+
+        for (String word : listOfWordsUserMightHaveMeant)
+        {
+            System.out.print("\nDid you mean: " + word + "?");
+
+        }
+
+
     }
 }
