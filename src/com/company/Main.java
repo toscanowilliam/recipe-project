@@ -31,7 +31,9 @@ public class Main {
 
         Boolean inputIsCorrect = true;
 
-        while(inputIsCorrect)
+        String stringSelection = "";
+
+        while(!stringSelection.equals("q"))
         {
             System.out.println("\nPlease Select the following:\n");
             System.out.println("Find ingredients by recipe? (Press I/i)\n");
@@ -39,7 +41,7 @@ public class Main {
             System.out.println("Quit? (Press Q/q)\n");
 
             Scanner selection = new Scanner(System.in);
-            String stringSelection = selection.next().toLowerCase();
+            stringSelection = selection.next().toLowerCase();
 
             switch (stringSelection)
             {
