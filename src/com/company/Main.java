@@ -20,25 +20,34 @@ public class Main {
         //This whole function was helped by:
         //https://stackoverflow.com/questions/34928182/how-to-make-a-java-main-menu-loop-after-using-a-case
 
+        /*
+            Selection:
+            Q/q == Quit
+            B/b == Back
+            M/m == Main Menu
+            R/r == Enter Recipe
+            I/i == Enter Ingredient
+         */
+
         Boolean inputIsCorrect = true;
 
         while(inputIsCorrect)
         {
             System.out.println("\nPlease Select the following:\n");
-            System.out.println("Find ingredients by recipe? (Press 1)\n");
-            System.out.println("Find recipe by ingredients? (Press 2)\n");
-            System.out.println("Quit? (Press 3)\n");
+            System.out.println("Find ingredients by recipe? (Press I/i)\n");
+            System.out.println("Find recipe by ingredients? (Press R/r)\n");
+            System.out.println("Quit? (Press Q/q)\n");
 
             Scanner selection = new Scanner(System.in);
-            int numberedSelection = selection.nextInt();
+            String stringSelection = selection.next().toLowerCase();
 
-            switch (numberedSelection)
+            switch (stringSelection)
             {
-                case 1:
+                case "i":
                     findByRecipe();
                     continue;
-                case 3:
 
+                case "q":
                     System.out.println("\nExiting Program...");
                     System.exit(0);
                     break;
@@ -52,20 +61,19 @@ public class Main {
 
     public static void findByRecipe()
     {
-        Boolean userChoseReturnToMainMenu = false;
+        String selectionOrRecipe = "";
 
         whileLoop:
-        while(!userChoseReturnToMainMenu)
+        while(!selectionOrRecipe.equals("m"))
         {
             Boolean foundRecipe = false;
 
-            //TODO: Use numbers instead of letters in a toString fashion
             System.out.print("\nPlease enter a Recipe\n");
-            System.out.print("Press r/R to return to Main Menu\n");
+            System.out.print("Press m/M to return to Main Menu\n");
             System.out.print("Press q/Q to Quit\n");
 
             Scanner input = new Scanner(System.in);
-            String selectionOrRecipe = input.next().toLowerCase();
+            selectionOrRecipe = input.next().toLowerCase();
 
             for (Recipe recipe : Database.allCurrentRecipes())
             {
@@ -79,14 +87,15 @@ public class Main {
                     }
                     break;
                 }
-                else if (selectionOrRecipe.equals("Q".toLowerCase()))
+                else if (selectionOrRecipe.equals("q"))
                 {
                     System.out.println("\nExiting Program...");
                     System.exit(0);
                     break;
                 }
-                else if (selectionOrRecipe.equals("R".toLowerCase()))
+                else if (selectionOrRecipe.equals("m"))
                 {
+                    System.out.println("\nBack to Main Menu");
                     break whileLoop;
                 }
             }
