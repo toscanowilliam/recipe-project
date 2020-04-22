@@ -69,11 +69,10 @@ public class SpellCheck {
 
 //Leaving this commented just in case. Could come in handy but will most likely just use the substring()
 //    private static String removeLastChar(String str, Integer i)
-//
 //    {
 //        return str.substring(0, str.length() - i); // remove last - letters
 //    }
-//
+////
 //    public static String removeFirstChar(String s, Integer i)
 //    {
 //        return s.substring(i); // remove first i letters
@@ -120,6 +119,9 @@ public class SpellCheck {
                 insideLoop = true;
             }
         }
+        //This line of code below can easily be commented out if I want the list to be returned in order by letter
+        Collections.sort(listOfSubstrings, (item1, item2) -> item2.length() - item1.length());
+
         return listOfSubstrings;
     }
 
@@ -128,8 +130,9 @@ public class SpellCheck {
         List<String> listOfSubstringsForInputedWord = breakStringIntoAllPossibleSubstrings(inputedWord, 2);
         List<String> listOfWordsUserMightHaveMeant = new ArrayList<>();
 
-        for (Recipe recipe : allCurrentRecipes())
-        {
+        for (Recipe recipe : allCurrentRecipes())//This is hard coded to recipes. I also need to spell check ingredients
+        {                                        //This can be changed by passing in a list of names of the object.
+                                                // Or both lists (recipes and ingredients)
             List<String> listOfSubstringsForCurrentRecipe = recipe.getListOfSubstrings();
 
             for (String substring : listOfSubstringsForCurrentRecipe)

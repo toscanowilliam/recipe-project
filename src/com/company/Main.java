@@ -16,11 +16,11 @@ public class Main
     public static void main(String[] args)
     {
         //promptUser();
-        String inputedWord = "andwich";
+        String inputedWord = "ABIGWORD";
 
-        for (String wordUserMightHaveMeant : spellCheck(inputedWord))
+        for (String str: breakStringIntoAllPossibleSubstrings(inputedWord, 2))
         {
-            System.out.print("\nDid you mean: " + wordUserMightHaveMeant + "?");
+            System.out.print("\n" + str);
         }
     }
 
