@@ -80,7 +80,7 @@ public class SpellCheck {
 
     public static void replaceVowels(String str)
     {
-        str = "seetl";
+        str = "meel";
 
         String temp = str;
         /*This method has potential. I can organize substrings by their sound. For example "y" in "fly"
@@ -96,7 +96,6 @@ public class SpellCheck {
         vowels.add('y');
 
         int positionInVowels = 0;
-        int counter = 0; // when it gets passed y, counter is at 6
 
         List<String> correctlySpelledWords = new ArrayList<>();
         correctlySpelledWords.add("seasalt");
