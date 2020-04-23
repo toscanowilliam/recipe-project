@@ -78,6 +78,91 @@ public class SpellCheck {
 //        return s.substring(i); // remove first i letters
 //    }
 
+    public static void replaceVowels(String str)
+    {
+        str = "seesalt";
+
+        String temp = str;
+
+        List<Character> vowels = new ArrayList<>();
+        vowels.add('a');
+        vowels.add('e');
+        vowels.add('i');
+        vowels.add('o');
+        vowels.add('u');
+        vowels.add('y');
+
+        List<String> correctlySpelledWords = new ArrayList<>();
+        correctlySpelledWords.add("seasalt");
+
+        char[] strChars = str.toCharArray();
+        char c;
+
+        for (int i = 0; i < str.length(); i++)
+        {
+            temp = str;
+            c = strChars[i];
+
+            if (vowels.contains(str.charAt(i)))
+            {
+                strChars[i] = 'a';
+                temp = String.valueOf(strChars);
+
+                if (correctlySpelledWords.contains(temp))
+                {
+                    System.out.print("\nDid you mean: " + temp);
+                    break;
+                }
+
+                strChars[i] = 'e';
+                temp = String.valueOf(strChars);
+
+                if (correctlySpelledWords.contains(temp))
+                {
+                    System.out.print("\nDid you mean: " + temp);
+                    break;
+                }
+
+                strChars[i] = 'i';
+                temp = String.valueOf(strChars);
+
+                if (correctlySpelledWords.contains(temp))
+                {
+                    System.out.print("\nDid you mean: " + temp);
+                    break;
+                }
+
+                strChars[i] = 'o';
+                temp = String.valueOf(strChars);
+
+                if (correctlySpelledWords.contains(temp))
+                {
+                    System.out.print("\nDid you mean: " + temp);
+                    break;
+                }
+
+                strChars[i] = 'u';
+                temp = String.valueOf(strChars);
+
+                if (correctlySpelledWords.contains(temp))
+                {
+                    System.out.print("\nDid you mean: " + temp);
+                    break;
+                }
+
+                strChars[i] = 'y';
+                temp = String.valueOf(strChars);
+
+                if (correctlySpelledWords.contains(temp))
+                {
+                    System.out.print("\nDid you mean: " + temp);
+                    break;
+                }
+                strChars[i] = c;
+            }
+        }
+    }
+
 //Leaving this commented for future reference.
 //    public static void spellCheck3LetterWord(String inputedWord)
 //    {
@@ -146,65 +231,5 @@ public class SpellCheck {
             }
         }
         return listOfWordsUserMightHaveMeant;
-    }
-
-    public static void replaceVowels(String mispelledWord)
-    {
-
-
-        mispelledWord = "see salt";
-
-        String correctSpelledWord = "sea salt";
-
-        List<String> listOfCorrectlySpelledWords = new ArrayList<>();
-        listOfCorrectlySpelledWords.add(correctSpelledWord);
-
-        for (int i = 0; i < mispelledWord.length(); i++)
-        {
-            char c = mispelledWord.charAt(i);
-            if (c == 'e')
-            {
-                //replace char with a
-                //I can snip left most letter out of the word to make "replaceFirst" useful for multiple instances of c
-
-                mispelledWord = mispelledWord.replaceFirst("[e]","a");
-                if (listOfCorrectlySpelledWords.contains(mispelledWord))
-                {
-                    System.out.print("\nDid you mean: " + mispelledWord + "?");
-                }
-
-                //replace char with i
-                mispelledWord = mispelledWord.replaceFirst("[e]","i");
-                //replace char with o
-                mispelledWord = mispelledWord.replaceFirst("[e]","o");
-                //replace char with u
-                mispelledWord = mispelledWord.replaceFirst("[e]","u");
-                //replace char with y
-                mispelledWord = mispelledWord.replaceFirst("[e]","y");
-
-
-            }
-            if (c == 'e')
-            {
-
-            }
-            if (c == 'i')
-            {
-
-            }
-            if (c == 'o')
-            {
-
-            }
-            if (c == 'u')
-            {
-
-            }
-            if (c == 'y')
-            {
-
-            }
-
-        }
     }
 }

@@ -28,11 +28,15 @@ public class Main
         //replaceVowels(inputedWord);
 
         //test breakStringIntoAllPossibleSubstrings()
-        for (String str : breakStringIntoAllPossibleSubstrings(inputedWord, 3, 5))
-        {
-            System.out.print("\n" + str);
+//        for (String str : breakStringIntoAllPossibleSubstrings(inputedWord, 3, 5))
+//        {
+//            System.out.print("\n" + str);
+//
+//        }
 
-        }
+        //test separateChars
+        replaceVowels(inputedWord.toLowerCase());
+
     }
 
     public static void promptUser()
@@ -118,5 +122,4 @@ public class Main
             }
         }
     }
-
 }
