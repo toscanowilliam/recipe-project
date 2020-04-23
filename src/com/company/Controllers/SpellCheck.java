@@ -80,9 +80,12 @@ public class SpellCheck {
 
     public static void replaceVowels(String str)
     {
-        str = "seesalt";
+        str = "seetl";
 
         String temp = str;
+        /*This method has potential. I can organize substrings by their sound. For example "y" in "fly"
+        can be misspelled as "fligh" because of similar soundin "igh" and "y". Flight can be mispelled as flyt.
+        */
 
         List<Character> vowels = new ArrayList<>();
         vowels.add('a');
@@ -92,73 +95,38 @@ public class SpellCheck {
         vowels.add('u');
         vowels.add('y');
 
+        int positionInVowels = 0;
+        int counter = 0; // when it gets passed y, counter is at 6
+
         List<String> correctlySpelledWords = new ArrayList<>();
         correctlySpelledWords.add("seasalt");
+        correctlySpelledWords.add("salt");
+        correctlySpelledWords.add("meal");
 
         char[] strChars = str.toCharArray();
         char c;
 
+        outer:
         for (int i = 0; i < str.length(); i++)
         {
             temp = str;
             c = strChars[i];
-
             if (vowels.contains(str.charAt(i)))
             {
-                strChars[i] = 'a';
-                temp = String.valueOf(strChars);
-
-                if (correctlySpelledWords.contains(temp))
+                while (positionInVowels < 6)
                 {
-                    System.out.print("\nDid you mean: " + temp);
-                    break;
+                    strChars[i] = vowels.get(positionInVowels); //get the vowel and replace current letter in char array
+                    temp = String.valueOf(strChars);            //assign changed char array as a temporary sting
+                    positionInVowels += 1;                      //on to the next vowel
+
+                    if (correctlySpelledWords.contains(temp))   //if the changed string (temp) is found in dictionary
+                    {
+                        System.out.print("\nDid you mean: " + temp);
+                        break outer;
+                    }
+                    strChars[i] = c;
                 }
-
-                strChars[i] = 'e';
-                temp = String.valueOf(strChars);
-
-                if (correctlySpelledWords.contains(temp))
-                {
-                    System.out.print("\nDid you mean: " + temp);
-                    break;
-                }
-
-                strChars[i] = 'i';
-                temp = String.valueOf(strChars);
-
-                if (correctlySpelledWords.contains(temp))
-                {
-                    System.out.print("\nDid you mean: " + temp);
-                    break;
-                }
-
-                strChars[i] = 'o';
-                temp = String.valueOf(strChars);
-
-                if (correctlySpelledWords.contains(temp))
-                {
-                    System.out.print("\nDid you mean: " + temp);
-                    break;
-                }
-
-                strChars[i] = 'u';
-                temp = String.valueOf(strChars);
-
-                if (correctlySpelledWords.contains(temp))
-                {
-                    System.out.print("\nDid you mean: " + temp);
-                    break;
-                }
-
-                strChars[i] = 'y';
-                temp = String.valueOf(strChars);
-
-                if (correctlySpelledWords.contains(temp))
-                {
-                    System.out.print("\nDid you mean: " + temp);
-                    break;
-                }
-                strChars[i] = c;
+                positionInVowels = 0;
             }
         }
     }
