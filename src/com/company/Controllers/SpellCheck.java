@@ -102,24 +102,26 @@ public class SpellCheck {
 //    }
 
 //    From: https://stackoverflow.com/questions/61332162/print-all-the-combination-of-substrings-from-a-given-string-in-order-by-letter
-    public static List<String> breakStringIntoAllPossibleSubstrings(String str, int num)
+    public static List<String> breakStringIntoAllPossibleSubstrings(String str, int min, int max)
     {
         List<String> listOfSubstrings = new ArrayList<>();
-        Boolean insideLoop = false;
 
-        for(int i=0; i<=str.length()-num; i++)
+        String sub;
+        int subLength;
+
+        for(int i=0; i<=str.length()-min; i++)
         {
-            for(int j=str.length(); j>=i+num; j--)
+            for(int j=str.length(); j>=i+min; j--)
             {
-                //System.out.println(str.substring(i, j));
-                if (insideLoop) //This is simply to not add the complete string to the list. Only substrings
+                sub = str.substring(i, j);
+                subLength = sub.length();
+                if (subLength >= min && subLength <= max)
                 {
-                    listOfSubstrings.add(str.substring(i, j));
+                    listOfSubstrings.add(sub);
                 }
-                insideLoop = true;
             }
         }
-        //This line of code below can easily be commented out if I want the list to be returned in order by letter
+        //This line of code below can easily be commented out if I want the list to be returned in order by letter instead of size
         Collections.sort(listOfSubstrings, (item1, item2) -> item2.length() - item1.length());
 
         return listOfSubstrings;
@@ -127,7 +129,7 @@ public class SpellCheck {
 
     public static List<String> spellCheck(String inputedWord)
     {
-        List<String> listOfSubstringsForInputedWord = breakStringIntoAllPossibleSubstrings(inputedWord, 2);
+        List<String> listOfSubstringsForInputedWord = breakStringIntoAllPossibleSubstrings(inputedWord, 2, inputedWord.length());
         List<String> listOfWordsUserMightHaveMeant = new ArrayList<>();
 
         for (Recipe recipe : allCurrentRecipes())//This is hard coded to recipes. I also need to spell check ingredients
@@ -144,5 +146,65 @@ public class SpellCheck {
             }
         }
         return listOfWordsUserMightHaveMeant;
+    }
+
+    public static void replaceVowels(String mispelledWord)
+    {
+
+
+        mispelledWord = "see salt";
+
+        String correctSpelledWord = "sea salt";
+
+        List<String> listOfCorrectlySpelledWords = new ArrayList<>();
+        listOfCorrectlySpelledWords.add(correctSpelledWord);
+
+        for (int i = 0; i < mispelledWord.length(); i++)
+        {
+            char c = mispelledWord.charAt(i);
+            if (c == 'e')
+            {
+                //replace char with a
+                //I can snip left most letter out of the word to make "replaceFirst" useful for multiple instances of c
+
+                mispelledWord = mispelledWord.replaceFirst("[e]","a");
+                if (listOfCorrectlySpelledWords.contains(mispelledWord))
+                {
+                    System.out.print("\nDid you mean: " + mispelledWord + "?");
+                }
+
+                //replace char with i
+                mispelledWord = mispelledWord.replaceFirst("[e]","i");
+                //replace char with o
+                mispelledWord = mispelledWord.replaceFirst("[e]","o");
+                //replace char with u
+                mispelledWord = mispelledWord.replaceFirst("[e]","u");
+                //replace char with y
+                mispelledWord = mispelledWord.replaceFirst("[e]","y");
+
+
+            }
+            if (c == 'e')
+            {
+
+            }
+            if (c == 'i')
+            {
+
+            }
+            if (c == 'o')
+            {
+
+            }
+            if (c == 'u')
+            {
+
+            }
+            if (c == 'y')
+            {
+
+            }
+
+        }
     }
 }

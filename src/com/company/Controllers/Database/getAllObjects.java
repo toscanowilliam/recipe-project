@@ -24,7 +24,7 @@ public class getAllObjects
         cerealIngredients.add("milk");
         cereal.setIngredients(cerealIngredients);
         cereal.setLetterCountsOfNameOfRecipe(SpellCheck.getLetterCountsOfWord(cereal.getNameOfRecipe()));
-        cereal.setListOfSubstrings(SpellCheck.breakStringIntoAllPossibleSubstrings(cereal.getNameOfRecipe(), 2));
+        cereal.setListOfSubstrings(SpellCheck.breakStringIntoAllPossibleSubstrings(cereal.getNameOfRecipe(), 2, cereal.getNameOfRecipe().length()));
 
         Recipe sandwich = new Recipe();
         sandwich.setNameOfRecipe("sandwich");
@@ -36,7 +36,7 @@ public class getAllObjects
         sandwichIngredients.add("mustard");
         sandwich.setIngredients(sandwichIngredients);
         sandwich.setLetterCountsOfNameOfRecipe(SpellCheck.getLetterCountsOfWord(sandwich.getNameOfRecipe()));
-        sandwich.setListOfSubstrings(SpellCheck.breakStringIntoAllPossibleSubstrings(sandwich.getNameOfRecipe(), 2));
+        sandwich.setListOfSubstrings(SpellCheck.breakStringIntoAllPossibleSubstrings(sandwich.getNameOfRecipe(), 2, sandwich.getNameOfRecipe().length()));
 
         List<Recipe> listOfRecipes = new ArrayList<>();
         listOfRecipes.add(cereal);

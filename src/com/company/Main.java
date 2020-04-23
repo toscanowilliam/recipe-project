@@ -18,9 +18,20 @@ public class Main
         //promptUser();
         String inputedWord = "ABIGWORD";
 
-        for (String str: breakStringIntoAllPossibleSubstrings(inputedWord, 2))
+        //test spellCheck
+//        for (String str: spellCheck(inputedWord))
+//        {
+//            System.out.print("\n" + str);
+//        }
+
+        //test replaceVowels()
+        //replaceVowels(inputedWord);
+
+        //test breakStringIntoAllPossibleSubstrings()
+        for (String str : breakStringIntoAllPossibleSubstrings(inputedWord, 3, 5))
         {
             System.out.print("\n" + str);
+
         }
     }
 
