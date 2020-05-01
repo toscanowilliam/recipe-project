@@ -35,7 +35,10 @@ public class Main
 //        }
 
         //test separateChars
-        replaceVowels(inputedWord.toLowerCase());
+        //replaceVowels(inputedWord.toLowerCase());
+
+        //test replaceVowelsWithBlank
+        replaceVowelsWithBlank(inputedWord);
 
     }
 

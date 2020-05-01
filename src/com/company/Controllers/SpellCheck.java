@@ -10,6 +10,7 @@ import java.util.stream.Stream;
 
 import static com.company.Controllers.Database.getAllObjects.allCurrentRecipes;
 import static com.company.Controllers.Database.organizeData.listOfNamesOfAllRecipes;
+import static com.company.Controllers.Database.organizeData.sounds;
 
 public class SpellCheck {
 
@@ -80,11 +81,12 @@ public class SpellCheck {
 
     public static void replaceVowels(String str)
     {
-        str = "meel";
+        str = "saesalt";
 
         String temp = str;
         /*This method has potential. I can organize substrings by their sound. For example "y" in "fly"
-        can be misspelled as "fligh" because of similar soundin "igh" and "y". Flight can be mispelled as flyt.
+        can be misspelled as "fligh" because of similar sound in "igh" and "y". Flight can be mispelled as flyt.
+        Currently, this method only works if one letter is misspelled
         */
 
         List<Character> vowels = new ArrayList<>();
@@ -102,14 +104,14 @@ public class SpellCheck {
         correctlySpelledWords.add("salt");
         correctlySpelledWords.add("meal");
 
-        char[] strChars = str.toCharArray();
-        char c;
+        char[] strChars = str.toCharArray(); //convert word to char array
+        char currentLetter; // a letter
 
         outer:
         for (int i = 0; i < str.length(); i++)
         {
-            temp = str;
-            c = strChars[i];
+            temp = str; //temporary string
+            currentLetter = strChars[i];
             if (vowels.contains(str.charAt(i)))
             {
                 while (positionInVowels < 6)
@@ -120,15 +122,51 @@ public class SpellCheck {
 
                     if (correctlySpelledWords.contains(temp))   //if the changed string (temp) is found in dictionary
                     {
-                        System.out.print("\nDid you mean: " + temp);
+                        System.out.print("\nDid you mean: " + temp); //this can be added to a possibleWords list.
                         break outer;
                     }
-                    strChars[i] = c;
+                    strChars[i] = currentLetter;
                 }
                 positionInVowels = 0;
             }
         }
     }
+
+    public static void replaceVowelsWithBlank(String str)
+    {
+        List<Character> vowels = new ArrayList<>();
+        vowels.add('a');
+        vowels.add('e');
+        vowels.add('i');
+        vowels.add('o');
+        vowels.add('u');
+        vowels.add('y');
+
+        str = "saesalt";
+
+        String temp = str;
+
+        char[] strChars = str.toCharArray(); //convert word to char array
+        char currentLetter; // a letter
+
+        for (int i = 0; i < str.length(); i++)
+        {
+            //temp = str; //temporary string
+            currentLetter = strChars[i];
+            if (vowels.contains(str.charAt(i)))
+            {
+                strChars[i] = '_';              //swapping vowel at i with '_'
+
+            }
+
+        }
+
+        System.out.print(String.valueOf(strChars));
+
+    }
+    
+
+
 
 //Leaving this commented for future reference.
 //    public static void spellCheck3LetterWord(String inputedWord)
@@ -199,4 +237,8 @@ public class SpellCheck {
         }
         return listOfWordsUserMightHaveMeant;
     }
+
+
+
+
 }
