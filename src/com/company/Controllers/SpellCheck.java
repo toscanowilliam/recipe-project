@@ -69,15 +69,15 @@ public class SpellCheck {
 
 
 //Leaving this commented just in case. Could come in handy but will most likely just use the substring()
-//    private static String removeLastChar(String str, Integer i)
-//    {
-//        return str.substring(0, str.length() - i); // remove last - letters
-//    }
-////
-//    public static String removeFirstChar(String s, Integer i)
-//    {
-//        return s.substring(i); // remove first i letters
-//    }
+    private static String removeLastChar(String str, Integer i)
+    {
+        return str.substring(0, str.length() - i); // remove last - letters
+    }
+//
+    public static String removeFirstChar(String s, Integer i)
+    {
+        return s.substring(i); // remove first i letters
+    }
 
     public static void replaceVowels(String str)
     {
@@ -132,7 +132,7 @@ public class SpellCheck {
         }
     }
 
-    public static void replaceVowelsWithBlank(String str)
+    public static String replaceVowelsWithBlank(String str)
     {
         List<Character> vowels = new ArrayList<>();
         vowels.add('a');
@@ -156,13 +156,58 @@ public class SpellCheck {
             if (vowels.contains(str.charAt(i)))
             {
                 strChars[i] = '_';              //swapping vowel at i with '_'
+            }
+        }
+        return str;
+    }
 
+
+    public static void replaceBlankWithSound(String str)
+    {
+        char[] strChars = str.toCharArray(); //convert word to char array
+        char currentLetter;
+
+        List<String> substrings = breakStringIntoSubstringsBeforeEachBlank(str);
+
+
+    }
+
+    public static List<String> breakStringIntoSubstringsBeforeEachBlank(String str)
+    {
+        char[] strChars = str.toCharArray(); //convert word to char array
+        char currentLetter;
+
+        int mostRecentIndexOf_ = 0;
+
+        List<String> substrings = new ArrayList<>();
+
+        boolean encounteredFirstBlank = false; //encountered first underscore char also known as "blank"
+
+        for (int i = 0; i <= str.length() - 1; i++)
+        {
+            if (strChars[i] == '_' && !encounteredFirstBlank)
+            {
+                substrings.add((str.substring(mostRecentIndexOf_, i)));
+                mostRecentIndexOf_ = i;
+                encounteredFirstBlank = true;
+                continue;
             }
 
+            if (strChars[i] == '_' && encounteredFirstBlank)
+            {
+                substrings.add((str.substring(mostRecentIndexOf_ + 1, i)));
+                mostRecentIndexOf_ = i;
+            }
+
+            if (i == str.length() - 1)
+            {
+                String newStr = str.substring(mostRecentIndexOf_ + 1, i);
+                String newStr2 = String.valueOf(strChars[i]);
+                String newStr3 = newStr + newStr2;
+                substrings.add(newStr3);
+            }
         }
-
-        System.out.print(String.valueOf(strChars));
-
+        return substrings;
     }
     
 

@@ -38,9 +38,13 @@ public class Main
         //replaceVowels(inputedWord.toLowerCase());
 
         //test replaceVowelsWithBlank
-        replaceVowelsWithBlank(inputedWord);
+      //  replaceVowelsWithBlank(inputedWord);
 
-        //test commit comment
+        //test breakStringIntoSubstringsBeforeEachBlank
+     //   System.out.print(breakStringIntoSubstringsBeforeEachBlank("S_SALL_T"));
+
+        //test replaceBlankWithSound
+        replaceBlankWithSound(inputedWord);
 
     }
 
