@@ -28,10 +28,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3a757772-b881-4948-947a-52b9abda2df1" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/recepi-project/com/company/Controllers/SpellCheck.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/recepi-project/com/company/Controllers/SpellCheck.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/recepi-project/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/recepi-project/com/company/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Controllers/SpellCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Controllers/SpellCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +167,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/com/company/Controllers/SpellCheck.java</url>
-          <line>209</line>
+          <line>206</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
       </breakpoints>

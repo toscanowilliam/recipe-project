@@ -132,8 +132,14 @@ public class SpellCheck {
         }
     }
 
-    public static String replaceVowelsWithBlank(String str)
+    public static String replaceVowelsWithUnderscore_(String str)
     {
+        //TODO: Rewrite a similar method that identifies a "sound" in a string (collection of vowels between constants) and replaces them with underscores
+        //The above to-do might actually be irrelevent. Because vowels are sounds and will just become an underscore. So It's more about
+        //replacing those underscores with a sound.
+
+        //TODO: Write a method that replaces underscores with other vowels or sounds
+
         List<Character> vowels = new ArrayList<>();
         vowels.add('a');
         vowels.add('e');
@@ -162,46 +168,37 @@ public class SpellCheck {
     }
 
 
-    public static void replaceBlankWithSound(String str)
-    {
-        char[] strChars = str.toCharArray(); //convert word to char array
-        char currentLetter;
-
-        List<String> substrings = breakStringIntoSubstringsBeforeEachBlank(str);
-
-
-    }
 
     public static List<String> breakStringIntoSubstringsBeforeEachBlank(String str)
     {
         char[] strChars = str.toCharArray(); //convert word to char array
         char currentLetter;
 
-        int mostRecentIndexOf_ = 0;
+        int mostRecentIndexOfUnderscore_ = 0;
 
         List<String> substrings = new ArrayList<>();
 
-        boolean encounteredFirstBlank = false; //encountered first underscore char also known as "blank"
+        boolean encounteredFirstUnderscore_ = false; //encountered first underscore char also known as "blank"
 
         for (int i = 0; i <= str.length() - 1; i++)
         {
-            if (strChars[i] == '_' && !encounteredFirstBlank)
+            if (strChars[i] == '_' && !encounteredFirstUnderscore_)
             {
-                substrings.add((str.substring(mostRecentIndexOf_, i)));
-                mostRecentIndexOf_ = i;
-                encounteredFirstBlank = true;
+                substrings.add((str.substring(mostRecentIndexOfUnderscore_, i)));
+                mostRecentIndexOfUnderscore_ = i;
+                encounteredFirstUnderscore_ = true;
                 continue;
             }
 
-            if (strChars[i] == '_' && encounteredFirstBlank)
+            if (strChars[i] == '_' && encounteredFirstUnderscore_)
             {
-                substrings.add((str.substring(mostRecentIndexOf_ + 1, i)));
-                mostRecentIndexOf_ = i;
+                substrings.add((str.substring(mostRecentIndexOfUnderscore_ + 1, i)));
+                mostRecentIndexOfUnderscore_ = i;
             }
 
             if (i == str.length() - 1)
             {
-                String newStr = str.substring(mostRecentIndexOf_ + 1, i);
+                String newStr = str.substring(mostRecentIndexOfUnderscore_ + 1, i);
                 String newStr2 = String.valueOf(strChars[i]);
                 String newStr3 = newStr + newStr2;
                 substrings.add(newStr3);
