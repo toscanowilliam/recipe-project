@@ -40,6 +40,8 @@ public class Main
         //test replaceVowelsWithBlank
         replaceVowelsWithBlank(inputedWord);
 
+        //test commit comment
+
     }
 
     public static void promptUser()
